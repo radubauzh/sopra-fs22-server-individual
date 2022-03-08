@@ -109,6 +109,9 @@ public class UserService {
     public void updateBirthday(long id, String birthday) {
         User user = this.getUserById(id);
         user.setBirthday(birthday);
+        // SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
+        //user.setBirthday(formatter.format(birthday));
+
         userRepository.flush(); // used to make sure data is written, else it could be buffered
     }
 

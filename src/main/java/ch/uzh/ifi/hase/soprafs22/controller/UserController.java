@@ -9,6 +9,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
+import java.sql.SQLOutput;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -91,7 +92,7 @@ public class UserController {
     @PutMapping("/users/{id}/username")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void updateUsername(@PathVariable long id, @RequestBody String username){
-        userService.updateUsername(id, username);
+        userService.updateUsername(id, username.replace("\"", ""));
     }
 
     // Server: UserService
@@ -100,7 +101,8 @@ public class UserController {
     @PutMapping("/users/{id}/birthday")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void updateBirthday(@PathVariable long id, @RequestBody String birthday){
-        userService.updateBirthday(id, birthday);
+        System.out.println(birthday);
+        userService.updateBirthday(id, birthday.replace("\"", ""));
     }
 
     //the login function, conflict throws 409
