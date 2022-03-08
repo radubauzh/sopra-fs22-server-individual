@@ -101,7 +101,7 @@ public class UserController {
     @PutMapping("/users/{id}/birthday")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void updateBirthday(@PathVariable long id, @RequestBody String birthday){
-        System.out.println(birthday);
+        //System.out.println(birthday);
         userService.updateBirthday(id, birthday.replace("\"", ""));
     }
 
