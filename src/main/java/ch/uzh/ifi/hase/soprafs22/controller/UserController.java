@@ -9,9 +9,12 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
+import java.lang.reflect.Type;
 import java.sql.SQLOutput;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Date;
 
 /**
  * User Controller
@@ -100,9 +103,11 @@ public class UserController {
     // updates Birthday
     @PutMapping("/users/{id}/birthday")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void updateBirthday(@PathVariable long id, @RequestBody String birthday){
+    public void updateBirthday(@PathVariable long id, @RequestBody LocalDate birthday){
         //System.out.println(birthday);
-        userService.updateBirthday(id, birthday.replace("\"", ""));
+        //System.out.println(birthday.getClass().getName());
+        userService.updateBirthday(id, birthday);
+        //userService.updateBirthday(id, birthday.replace("\"", "")); //works
     }
 
     //the login function, conflict throws 409

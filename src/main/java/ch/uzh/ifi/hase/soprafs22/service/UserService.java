@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.server.ResponseStatusException;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.UUID;
 import java.text.SimpleDateFormat;
@@ -106,7 +107,7 @@ public class UserService {
     // Server: UserController
     // Client: Edit.js
     // updates Birthday
-    public void updateBirthday(long id, String birthday) {
+    public void updateBirthday(long id, LocalDate birthday) {
         User user = this.getUserById(id);
         user.setBirthday(birthday);
         // SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
