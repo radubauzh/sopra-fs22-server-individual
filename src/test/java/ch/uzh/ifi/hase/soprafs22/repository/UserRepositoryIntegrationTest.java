@@ -8,6 +8,8 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
 
+import java.time.LocalDate;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
@@ -30,7 +32,8 @@ public class UserRepositoryIntegrationTest {
         user.setToken("1");
         // needed to add a pw & creationdate bc it cant be empty
         user.setPassword("Password");
-        user.setCreationDate("30-04-2021");
+        LocalDate date = LocalDate.now();
+        user.setCreationDate(date);
 
         entityManager.persist(user);
         entityManager.flush();

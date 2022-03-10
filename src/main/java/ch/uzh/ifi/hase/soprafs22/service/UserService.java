@@ -44,9 +44,9 @@ public class UserService {
         newUser.setStatus(UserStatus.OFFLINE);
 
         // Sets the creation Date when creating a new user
-        Date date = new Date();
-        SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
-        newUser.setCreationDate(formatter.format(date));
+        LocalDate date = LocalDate.now();
+        //SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
+        newUser.setCreationDate(date);
         checkIfUserExists(newUser);
 
         // saves the given entity but data is only persisted in the database once flush() is called

@@ -37,7 +37,7 @@ public class User implements Serializable {
     private UserStatus status;
 
     @Column(nullable = false)
-    private String creationDate;
+    private LocalDate creationDate;
 
     @Column
     private LocalDate birthday;
@@ -50,11 +50,11 @@ public class User implements Serializable {
         this.birthday = birthday;
     }
 
-    public String getCreationDate() {
+    public LocalDate getCreationDate() {
         return creationDate;
     }
 
-    public void setCreationDate(String creationDate) {
+    public void setCreationDate(LocalDate creationDate) {
         this.creationDate = creationDate;
     }
 

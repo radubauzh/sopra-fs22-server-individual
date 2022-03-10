@@ -11,7 +11,7 @@ public class UserGetDTO {
     private String password;
     private String username;
     private UserStatus status;
-    private String creationDate;
+    private LocalDate creationDate;
     private LocalDate birthday;
     private String token;
 
@@ -23,12 +23,12 @@ public class UserGetDTO {
         this.birthday = birthday;
     }
 
-    public void setCreationDate(String creationDate) {
+    public void setCreationDate(LocalDate creationDate) {
         this.creationDate = creationDate;
     }
 
     // shows as not used but if its not here it will not set the date
-    public String getCreationDate() { return creationDate; }
+    public LocalDate getCreationDate() { return creationDate; }
 
     public Long getId() {
         return id;
