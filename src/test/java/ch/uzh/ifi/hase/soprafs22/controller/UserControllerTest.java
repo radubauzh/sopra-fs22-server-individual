@@ -124,6 +124,7 @@ public class UserControllerTest {
     //--------------------------------------------------------------------------- all new
     /**
      * Test a postRequest to users, http-method, http-status, content-type // resulting data
+     * Same Username ->  add User failed because username already exists -> Conflict 409
      * @throws Exception
      */
     @Test
@@ -155,6 +156,7 @@ public class UserControllerTest {
 
     /**
      * Test putRequest to users, http-method, http-status, content-type
+     * update user profile -> 204 No Content
      * @throws Exception
      */
     @Test
@@ -193,6 +195,7 @@ public class UserControllerTest {
 
     /**
      * Test a getRequest to users/{userId}, http-method, http-status, content-type
+     *
      * @throws Exception
      */
     @Test
@@ -218,12 +221,15 @@ public class UserControllerTest {
         MvcResult result = mockMvc.perform(getRequest).andReturn();
 
         MockHttpServletResponse response = result.getResponse();
+        //System.out.println(result.getResponse());
 
-        // test the http status of the response
+        // test the http status of the response -> 200
         assertEquals(HttpStatus.OK.value(), response.getStatus());
+        //System.out.println(response.getStatus());
 
-        // test the http method ()
+        // test the http method () -> GET
         assertEquals(HttpMethod.GET.name(), result.getRequest().getMethod());
+        //System.out.println(result.getRequest().getMethod());
 
         // test the content type of the response
         assertEquals(MediaType.APPLICATION_JSON.toString(), result.getRequest().getContentType());
