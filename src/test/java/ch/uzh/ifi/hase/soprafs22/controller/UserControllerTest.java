@@ -239,5 +239,47 @@ public class UserControllerTest {
         assertEquals(MediaType.APPLICATION_JSON.toString(), result.getRequest().getContentType());
     }
 
+    /**
+     * Test a getRequest to users/{userId}, http-method, http-status, content-type
+     * get -> 404 not found
+     * @throws Exception
+     */
+    @Test
+    public void getRequest_users_userNotFound() throws Exception { //works
+        // given
+        User user = new User();
+        user.setId(1L);
+        user.setUsername("testUsername");
+        user.setToken("1");
+        user.setStatus(UserStatus.ONLINE);
+
+        UserPostDTO userPostDTO = new UserPostDTO();
+        userPostDTO.setUsername("testUsername");
+
+        Mockito.doThrow(new ResponseStatusException(HttpStatus.NOT_FOUND)).when(userService).getUserById(Mockito.anyLong());
+
+        // when/then -> do the request + validate the result
+        MockHttpServletRequestBuilder getRequest = get("/users/23")
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(asJsonString(userPostDTO));
+
+        // then
+        MvcResult result = mockMvc.perform(getRequest).andReturn();
+
+        MockHttpServletResponse response = result.getResponse();
+        //System.out.println(result.getResponse());
+
+        // test the http status of the response -> 200
+        assertEquals(HttpStatus.NOT_FOUND.value(), response.getStatus());
+        //System.out.println(response.getStatus());
+
+        // test the http method () -> GET
+        assertEquals(HttpMethod.GET.name(), result.getRequest().getMethod());
+        //System.out.println(result.getRequest().getMethod());
+
+        // test the content type of the response
+        assertEquals(MediaType.APPLICATION_JSON.toString(), result.getRequest().getContentType());
+    }
+
 
 }
