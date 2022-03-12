@@ -55,7 +55,9 @@ public class UserControllerTest {
 
     @MockBean
     private UserService userService;
-
+    /**
+     * POST -> add User -> 201
+     */
     @Test
     public void givenUsers_whenGetUsers_thenReturnJsonArray() throws Exception {
         // given
@@ -78,7 +80,9 @@ public class UserControllerTest {
                 .andExpect(jsonPath("$[0].status", is(user.getStatus().toString())));
     }
 
-
+    /**
+     * GET -> Users -> list
+     */
     @Test
     public void createUser_validInput_userCreated() throws Exception {
         // given
