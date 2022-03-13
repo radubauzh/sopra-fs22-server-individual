@@ -10,7 +10,7 @@ public class UserGetDTO {
     private Long id;
     private String password;
     private String username;
-    private UserStatus status;
+    private Boolean status;
     private LocalDate creationDate;
     private LocalDate birthday;
     private String token;
@@ -38,33 +38,33 @@ public class UserGetDTO {
         this.id = id;
     }
 
+    /*
+        public String getPassword() { return password; }
+    **/
+        public void setPassword(String password) {
+            this.password = password;
+        }
 
-    public String getPassword() { return password; }
+        public String getUsername() {
+            return username;
+        }
 
-    public void setPassword(String password) {
-        this.password = password;
-    }
+        public void setUsername(String username) {
+            this.username = username;
+        }
 
-    public String getUsername() {
-        return username;
-    }
+        public Boolean getStatus() {
+            return status;
+        }
 
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
-    public UserStatus getStatus() {
-        return status;
-    }
-
-    public void setStatus(UserStatus status) {
-        this.status = status;
-    }
-/*
-    public String getToken() {
-        return token;
-    }
-**/
+        public void setStatus(Boolean status) {
+            this.status = status;
+        }
+    /*
+        public String getToken() {
+            return token;
+        }
+    **/
     public void setToken(String token) {
         this.token = token;
     }

@@ -41,7 +41,7 @@ public class UserService {
 
     public User createUser(User newUser) {
         newUser.setToken(UUID.randomUUID().toString());
-        newUser.setStatus(UserStatus.OFFLINE);
+        newUser.setStatus(Boolean.FALSE);
 
         // Sets the creation Date when creating a new user
         LocalDate date = LocalDate.now();
@@ -95,11 +95,11 @@ public class UserService {
     // sets the status to Online if User is Offline or other way around
     public void updateStatus(long id) {
         User user = this.getUserById(id);
-        if (user.getStatus() == UserStatus.OFFLINE){
-            user.setStatus(UserStatus.ONLINE);
+        if (user.getStatus() == Boolean.FALSE){
+            user.setStatus(Boolean.TRUE);
         }
         else{
-            user.setStatus(UserStatus.OFFLINE);
+            user.setStatus(Boolean.FALSE);
         }
         userRepository.flush(); // used to make sure data is written, else it could be buffered
     }

@@ -28,7 +28,7 @@ public class UserRepositoryIntegrationTest {
         // given
         User user = new User();
         user.setUsername("firstname@lastname");
-        user.setStatus(UserStatus.OFFLINE);
+        user.setStatus(Boolean.TRUE);
         user.setToken("1");
         // needed to add a pw & creationdate bc it cant be empty
         user.setPassword("Password");

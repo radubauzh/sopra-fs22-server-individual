@@ -34,7 +34,7 @@ public class User implements Serializable {
     private String token;
 
     @Column(nullable = false)
-    private UserStatus status;
+    private Boolean status;
 
     @Column(nullable = false)
     private LocalDate creationDate;
@@ -90,11 +90,11 @@ public class User implements Serializable {
         this.token = token;
     }
 
-    public UserStatus getStatus() {
+    public Boolean getStatus() {
         return status;
     }
 
-    public void setStatus(UserStatus status) {
+    public void setStatus(Boolean status) {
         this.status = status;
     }
 }
