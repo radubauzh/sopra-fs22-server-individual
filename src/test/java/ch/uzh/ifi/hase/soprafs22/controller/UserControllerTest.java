@@ -43,9 +43,7 @@ import static org.junit.jupiter.api.Assertions.*;
  */
 
 
-/*
-I Dont know how to test http headers...
- */
+
 @WebMvcTest(UserController.class)
 public class UserControllerTest {
 
@@ -187,10 +185,11 @@ public class UserControllerTest {
 
         MockHttpServletResponse response = result.getResponse();
 
-        // test the http status of the response
+        // test the http status of the response -> Response == No Content 204
         assertEquals(HttpStatus.NO_CONTENT.value(), response.getStatus());
 
-        // test the http method ()
+
+        // test the http method () -> PUT
         assertEquals(HttpMethod.PUT.name(), result.getRequest().getMethod());
 
         // test the content type of the response
@@ -229,6 +228,8 @@ public class UserControllerTest {
 
         // test the http status of the response -> 200
         assertEquals(HttpStatus.OK.value(), response.getStatus());
+        //System.out.println(response.getStatus());
+        //System.out.println("HELLO HERE");
         //System.out.println(response.getStatus());
 
         // test the http method () -> GET
